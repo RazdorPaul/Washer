@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity"
+            maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="269.0"
+            prefWidth="778.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main.java.my.washer.controllers.MainWindowController">
+   <children>
+      <Button layoutX="389.0"
+              layoutY="52.0"
+              mnemonicParsing="false"
+              prefHeight="25.0"
+              prefWidth="352.0"
+              text="постоянные клиенты"
+              fx:id="permanentClientsButton"
+              onAction="#permanentClientsButton" />
+      <Button layoutX="389.0"
+              layoutY="96.0"
+              mnemonicParsing="false"
+              prefHeight="25.0"
+              prefWidth="352.0"
+              text="отчеты"
+              fx:id="reportsButton"
+              onAction="#reportsButton" />
+      <Button layoutX="37.0"
+              layoutY="52.0"
+              mnemonicParsing="false"
+              prefHeight="25.0"
+              prefWidth="296.0"
+              text="предварительная запись"
+              fx:id="preRecordButton" onAction="#preRecordButton" />
+      <Button layoutX="37.0"
+              layoutY="96.0"
+              mnemonicParsing="false"
+              prefHeight="25.0"
+              prefWidth="296.0"
+              text="список записей"
+              fx:id="recordsButton"
+              onAction="#recordsButton" />
+      <Button layoutX="37.0"
+              layoutY="139.0"
+              mnemonicParsing="false"
+              prefHeight="25.0"
+              prefWidth="296.0"
+              text="список выполненных заказов"
+              fx:id="finishedRecordsButton"
+              onAction="#finishedRecordsButton" />
+      <Button layoutX="37.0"
+              layoutY="181.0"
+              mnemonicParsing="false"
+              prefHeight="25.0"
+              prefWidth="296.0"
+              text="заказы на сегодня"
+              fx:id="onTodayOrdersButton"
+              onAction="#onTodayOrdersButton" />
+   </children>
+</AnchorPane>
