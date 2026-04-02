@@ -163,91 +163,67 @@ public class OrderWindowController {
             nameField.setEditable(false);
             nameField.setDisable(true);
             coreMain.setClientName(nameField.getText());
-            System.out.println("записанное в буфер значение: " + );
+            System.out.println("записанное в буфер значение: " + coreMain.getClientName());
         });
         brandField.setOnAction(event -> {
             brandField.setEditable(false);
             brandField.setDisable(true);
             coreMain.setCarBrand(brandField.getText());
-            System.out.println("записанное в буфер значение: " + );
+            System.out.println("записанное в буфер значение: " + coreMain.getCarBrand());
             });
         modelField.setOnAction(event -> {
             modelField.setEditable(false);
             modelField.setDisable(true);
             coreMain.setModel(modelField.getText());
-            System.out.println("записанное в буфер значение: " + );
+            System.out.println("записанное в буфер значение: " + coreMain.getCarModel());
         });
         timeRecordField.setOnAction(event -> {
             timeRecordField.setEditable(false);
             timeRecordField.setDisable(true);
             coreMain.setTimeRecord(timeRecordField.getText());
-            System.out.println("записанное в буфер значение: " + );
-            //modelField.setText("");
+            System.out.println("записанное в буфер значение: " + coreMain.getTimeRecord());
         });
         serviceField.setOnAction(event -> {
             serviceField.setEditable(false);
             serviceField.setDisable(true);
             coreMain.setService(serviceField.getText());
-            System.out.println("записанное в буфер значение: " + );
-            //modelField.setText("");
+            System.out.println("записанное в буфер значение: " + coreMain.getService());
         });
         priceField.setOnAction(event -> {
             priceField.setEditable(false);
             priceField.setDisable(true);
             coreMain.setPrice(priceField.getText());
-            System.out.println("записанное в буфер значение: " + );
+            System.out.println("записанное в буфер значение: " + coreMain.getPrice());
         });
         typePaymentField.setOnAction(event -> {
             typePaymentField.setEditable(false);
             typePaymentField.setDisable(true);
             coreMain.setTypePayment(typePaymentField.getText());
-            System.out.println("записанное в буфер значение: " + );
-            //modelField.setText("");
+            System.out.println("записанное в буфер значение: " + coreMain.getTypePayment());
         });
         workerField.setOnAction(event -> {
             workerField.setEditable(false);
             workerField.setDisable(true);
             coreMain.setWorker(workerField.getText());
-            System.out.println("записанное в буфер значение: " + );
-            //modelField.setText("");
+            System.out.println("записанное в буфер значение: " + coreMain.getWorker());
         });
         workTimeField.setOnAction(event -> {
             workTimeField.setEditable(false);
             workTimeField.setDisable(true);
             coreMain.setWorkTime(workTimeField.getText());
-            System.out.println("записанное в буфер значение: " + );
-            //modelField.setText("");
+            System.out.println("записанное в буфер значение: " + coreMain.getWorkTime());
         });
         phoneField.setOnAction(event -> {
             phoneField.setEditable(false);
             phoneField.setDisable(true);
             coreMain.setPhone(phoneField.getText());
-            System.out.println("записанное в буфер значение: " + );
-            //modelField.setText("");
+            System.out.println("записанное в буфер значение: " + coreMain.getClientPhone());
         });
         carNumberField.setOnAction(event -> {
             carNumberField.setEditable(false);
             carNumberField.setDisable(true);
             coreMain.setCarNumber(carNumberField.getText());
-            System.out.println("записанное в буфер значение: " + );
-            //modelField.setText("");
-        });
-
-        // обработка потери фокуса (валидация)
-        nameField.focusedProperty().addListener((obs, oldVal, newVal) -> {
-        });
-
-        phoneField.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            //if (!newVal) validatePhoneField();
-        });
-
-        priceField.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            //if (!newVal) validatePriceField();
-        });
-
-        // обработка потери фокуса (валидация)
-        nameField.focusedProperty().addListener((obs, oldVal, newVal) -> {
-            //if (!newVal) validateNameField();
+            System.out.println("записанное в буфер значение: " + coreMain.getCarNumber());
         });
     }
     }
