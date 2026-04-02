@@ -7,17 +7,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.my.washer.controllers.OrderWindowController">
    <children>
-      <Button fx:id="clientButton" layoutX="174.0" layoutY="31.0" mnemonicParsing="false" onAction="#clientButton" prefHeight="26.0" prefWidth="34.0" text="ок" />
-      <Button fx:id="carButton" layoutX="174.0" layoutY="64.0" mnemonicParsing="false" onAction="#carButton" prefHeight="26.0" prefWidth="34.0" text="ок" />
-      <Button fx:id="timeOfRecordButton" layoutX="174.0" layoutY="100.0" mnemonicParsing="false" onAction="#timeOfRecordButton" prefHeight="26.0" prefWidth="34.0" text="ок" />
-      <Button layoutX="173.0" layoutY="135.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="34.0" text="ок" />
-      <Button fx:id="priceButton" layoutX="174.0" layoutY="175.0" mnemonicParsing="false" onAction="#priceButton" prefHeight="26.0" prefWidth="34.0" text="ок" />
-      <Button fx:id="typeOfPayButton" layoutX="174.0" layoutY="208.0" mnemonicParsing="false" onAction="#typeOfPayButton" prefHeight="26.0" prefWidth="34.0" text="ок" />
-      <Button fx:id="servicesButton" layoutX="174.0" layoutY="135.0"
-              mnemonicParsing="false" onAction="#servicesButton"
-              prefHeight="26.0" prefWidth="34.0" text="ок" />
-      <Button fx:id="workerButton" layoutX="174.0" layoutY="242.0" mnemonicParsing="false" onAction="#workerButton" prefHeight="26.0" prefWidth="34.0" text="ок" />
-      <Button fx:id="timeOfWorkButton" layoutX="174.0" layoutY="276.0" mnemonicParsing="false" onAction="#timeOfWorkButton" prefHeight="26.0" prefWidth="34.0" text="ок" />
       <Button fx:id="saveButton" layoutX="24.0" layoutY="334.0" mnemonicParsing="false" onAction="#saveButton" prefHeight="25.0" prefWidth="195.0" text="записать" />
       <Button fx:id="editButton" layoutX="258.0" layoutY="334.0" mnemonicParsing="false" onAction="#editButton" prefHeight="25.0" prefWidth="257.0" text="редактировать" />
       <Button fx:id="closeButton" layoutX="551.0" layoutY="334.0" mnemonicParsing="false" onAction="#closeButton" prefHeight="25.0" prefWidth="184.0" text="закрыть" />
