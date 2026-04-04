@@ -10,7 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Car {
-    private String brand;
-    private String model;
-    private String carNumber;
+    private String brandCar;
+    private String modelCar;
+    private String numberCar;
+    private String typeCar;
 }

@@ -6,12 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.List;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Client {
-    private String name;
-    private String phoneNumber;
-    private List<Car> cars;
+    private String nameClient;
+    private String phoneNumberClient;
+    private List<Car> carsOfClient;
+    private List<Integer> ordersClientList;
+    private Integer countRecordsClient;
 }
