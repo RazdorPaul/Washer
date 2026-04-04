@@ -148,8 +148,6 @@ public class newOrderWindowController {
                 showError("Ошибка при создании записи");
             }
         }
-    }
-
     @FXML
     private void editButton() {
         if (showConfirmation("Редактирование", "Внести изменения в запись?", "Редактирование")) {
