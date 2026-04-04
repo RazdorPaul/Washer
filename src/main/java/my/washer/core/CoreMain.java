@@ -101,4 +101,26 @@ public class CoreMain {
     public String getCarNumber() {
         return car.getCarNumber();
     }
+
+    public void setDateRecord(String text) {
+    }
+
+    public void setMaterialsCost(String text) {
+    }
+
+    public boolean saveOrder() {
+        return true;
+    }
+
+    public String getDateRecord() {
+        return "";
+    }
+
+    public String getMaterialsCost() {
+        return "";
+    }
+
+    public boolean createOrder() {
+        return true;
+    }
 }
