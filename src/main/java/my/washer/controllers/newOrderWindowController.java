@@ -1,4 +1,4 @@
-package main.java.my.washer.controllers;
+package my.washer.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,15 +48,7 @@ public class newOrderWindowController {
     private String orderDate;
 
     @FXML
-    private void initialize() {
-        coreMain = new CoreMain();
-
-        // Установка текущей даты в заголовок
-        LocalDate now = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        orderDate = now.format(formatter);
-        orderTitleLabel.setText("Заказ от " + orderDate);
-    }
+    private void initialize() {}
 
     private boolean showConfirmation(String title, String content, String header) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -90,25 +82,17 @@ public class newOrderWindowController {
 
     @FXML
     private void clientButton() {
-        if (showConfirmation("Выбор клиента", "Выбрать клиента?", "Подтверждение")) {
-            // Открыть окно выбора/добавления клиента
-            showInfo("Открывается окно выбора клиента");
-        }
     }
 
     @FXML
     private void carButton() {
-        if (showConfirmation("Выбор автомобиля", "Выбрать автомобиль?", "Подтверждение")) {
-            // Открыть окно выбора автомобиля
-            showInfo("Открывается окно выбора автомобиля");
-        }
     }
 
     @FXML
     private void servicesButton() {
-        System.out.println("Нажата кнопка: Добавление услуг");
+        System.out.println("Нажата кнопка: Заказ");
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/my/washer/fxml/serviceAddingWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/my/washer/fxml/serviceAddingWindow.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Предварительная запись");
@@ -122,55 +106,23 @@ public class newOrderWindowController {
 
     @FXML
     private void dateTimeButton() {
-        if (showConfirmation("Выбор даты и времени", "Выбрать дату и время записи?", "Подтверждение")) {
-            // Открыть окно выбора даты и времени
-            showInfo("Открывается окно выбора даты и времени");
-        }
     }
 
     @FXML
     private void paymentButton() {
-        if (showConfirmation("Выбор оплаты", "Выбрать способ оплаты?", "Подтверждение")) {
-            // Открыть окно выбора оплаты
-            showInfo("Открывается окно выбора способа оплаты");
-        }
     }
 
     @FXML
     private void createRecordButton() {
-        if (showConfirmation("Создание записи", "Все данные проверены?", "Создать новую запись?")) {
-            // Логика создания записи
-            boolean success = coreMain.createOrder();
-            if (success) {
-                showInfo("Запись успешно создана!");
-                closeWindow();
-            } else {
-                showError("Ошибка при создании записи");
-            }
-        }
+    }
     @FXML
     private void editButton() {
-        if (showConfirmation("Редактирование", "Внести изменения в запись?", "Редактирование")) {
-            // Логика редактирования
-            showInfo("Режим редактирования");
-        }
     }
 
     @FXML
     private void cancelButton() {
-        if (showConfirmation("Отмена", "Отменить создание записи?", "Подтверждение")) {
-            closeWindow();
-        }
     }
 
     private void closeWindow() {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
-    }
-
-    // Метод для передачи данных из другого окна
-    public void setOrderData(String clientName, String carModel, String services) {
-        // Обновление заголовка или других элементов при необходимости
-        System.out.println("Получены данные: " + clientName + ", " + carModel + ", " + services);
     }
 }

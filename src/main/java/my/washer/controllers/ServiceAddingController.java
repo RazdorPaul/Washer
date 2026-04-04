@@ -1,4 +1,4 @@
-package main.java.my.washer.controllers;
+package my.washer.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

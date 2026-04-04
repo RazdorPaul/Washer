@@ -1,4 +1,4 @@
-package main.java.my.washer.controllers;
+package my.washer.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,9 +50,9 @@ public class MainWindowController {
 
     @FXML
     private void todayOrdersButton() {
-        System.out.println("Нажата кнопка: Предварительная запись");
+        System.out.println("Нажата кнопка: Заказ");
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/my/washer/fxml/orderWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/my/washer/fxml/orderWindow.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Предварительная запись");
@@ -68,7 +68,7 @@ public class MainWindowController {
     private void preRecordButton() {
         System.out.println("Нажата кнопка: Предварительная запись");
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/java/my/washer/fxml/newOrderWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/my/washer/fxml/newOrderWindow.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Предварительная запись");
