@@ -1,14 +1,13 @@
 plugins {
     application
-    id("org.openjfx.javafxplugin") version "0.1.0"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "my.washer"
+group = "ru.washer"
 version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
-    gradlePluginPortal()
 }
 
 dependencies {
@@ -16,6 +15,12 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     compileOnly("org.projectlombok:lombok:1.18.36")
     annotationProcessor("org.projectlombok:lombok:1.18.36")
+    implementation("io.javalin:javalin:6.7.0")
+    implementation("org.slf4j:slf4j-simple:2.0.9")
+    implementation("gg.jte:jte:3.1.9")
+    implementation("io.javalin:javalin-rendering:6.7.0")
+    implementation("org.postgresql:postgresql:42.7.1")
+    implementation("com.zaxxer:HikariCP:5.0.1")
 }
 
 tasks.test {
@@ -23,10 +28,16 @@ tasks.test {
 }
 
 application {
-    mainClass.set("my.washer.Washer")
+    mainClass.set("ru.washer.Washer")
 }
 
-javafx {
-    version = "21"                          // Версия JavaFX
-    modules = listOf("javafx.controls", "javafx.fxml")  // Нужные модули
+tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
+    manifest {
+        attributes["Main-Class"] = "ru.washer.Washer" // Твой главный класс
+    }
+    mergeServiceFiles()
+}
+
+tasks.named("build") {
+    dependsOn("shadowJar")
 }
