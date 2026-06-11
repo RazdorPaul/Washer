@@ -19,9 +19,9 @@ public class Washer {
 
     public static Javalin getApp() throws Exception {
         var hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl("jdbc:postgresql://localhost:5432/washer_db");
-        hikariConfig.setUsername("washer_user");
-        hikariConfig.setPassword("kassagar");
+        hikariConfig.setJdbcUrl(getDatabaseUrl());
+        hikariConfig.setUsername(getDataBaseUsername());
+        hikariConfig.setPassword(getDataBasePassword());
         var dataSource = new HikariDataSource(hikariConfig);
         BaseRepository.dataSource = dataSource;
         initDatabaseSchema(dataSource);
@@ -48,5 +48,20 @@ public class Washer {
             statement.execute(sql);
             System.out.println("✅ Схема базы данных успешно загружена!");
         }
+    }
+
+    private static String getDatabaseUrl() {
+        return System.getenv().getOrDefault("DATABASE_URL",
+                "jdbc:postgresql://localhost:5432/washer_db");
+    }
+
+    private static String getDataBaseUsername() {
+        return System.getenv().getOrDefault("DB_USERNAME",
+                "washer_user");
+    }
+
+    private static String getDataBasePassword() {
+        return System.getenv().getOrDefault("DB_PASSWORD",
+                "kassagar");
     }
 }
