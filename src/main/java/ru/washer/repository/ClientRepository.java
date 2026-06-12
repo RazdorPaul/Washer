@@ -5,6 +5,8 @@ import ru.washer.model.Client;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +14,9 @@ import java.util.Optional;
 public class ClientRepository extends BaseRepository {
 
     public static void save(Client client) throws SQLException {
-        String sql = "INSERT INTO clients (nickname, first_name, last_name, phone, email, encrypt_password) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+        // created_at и updated_at база проставит сама благодаря DEFAULT CURRENT_TIMESTAMP
+        String sql = "INSERT INTO clients (nickname, first_name, last_name, phone, email, encrypt_password, birthday) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (var conn = dataSource.getConnection();
              var stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, client.getNickname());
@@ -22,6 +25,7 @@ public class ClientRepository extends BaseRepository {
             stmt.setString(4, client.getPhone());
             stmt.setString(5, client.getEmail());
             stmt.setString(6, client.getEncryptPassword());
+            stmt.setObject(7, client.getBirthday());
 
             stmt.executeUpdate();
 
@@ -61,8 +65,10 @@ public class ClientRepository extends BaseRepository {
     }
 
     public static void update(Client client) throws SQLException {
+        // Явно обновляем updated_at на текущее время базы данных
         String sql = "UPDATE clients SET nickname = ?, first_name = ?, last_name = ?, " +
-                "phone = ?, email = ?, encrypt_password = ? WHERE id = ?";
+                "phone = ?, email = ?, encrypt_password = ?, birthday = ?, " +
+                "updated_at = CURRENT_TIMESTAMP WHERE id = ?";
         try (var conn = dataSource.getConnection();
              var stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, client.getNickname());
@@ -71,7 +77,8 @@ public class ClientRepository extends BaseRepository {
             stmt.setString(4, client.getPhone());
             stmt.setString(5, client.getEmail());
             stmt.setString(6, client.getEncryptPassword());
-            stmt.setLong(7, client.getId());
+            stmt.setObject(7, client.getBirthday());
+            stmt.setLong(8, client.getId());
             stmt.executeUpdate();
         }
     }
@@ -151,6 +158,9 @@ public class ClientRepository extends BaseRepository {
         client.setFirstName(rs.getString("first_name"));
         client.setLastName(rs.getString("last_name"));
         client.setPhone(rs.getString("phone"));
+        client.setBirthday(rs.getObject("birthday", LocalDate.class));
+        client.setCreatedAt(rs.getObject("created_at", LocalDateTime.class));
+        client.setUpdatedAt(rs.getObject("updated_at", LocalDateTime.class));
         return client;
     }
 }

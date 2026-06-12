@@ -6,16 +6,18 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-public class Car {
-    @ToString.Exclude
-    private Long id;
+@ToString(callSuper = true)
+public class Car extends Vehicle {
 
-    private String brand;
-    private String model;
+    // Специфичные поля для автомобиля (если появятся)
+    private Integer numberOfDoors;
+    private String bodyType; // седан, хэтчбек, внедорожник и т.д.
 
-    public Car (String brand, String model) {
-        this.brand = brand;
-        this.model = model;
+    public Car(Long clientId, Long modelId) {
+        super(clientId, modelId, "CAR");
+    }
+
+    public Car() {
+        super();
     }
 }
