@@ -21,6 +21,7 @@ dependencies {
     implementation("io.javalin:javalin-rendering:6.7.0")
     implementation("org.postgresql:postgresql:42.7.1")
     implementation("com.zaxxer:HikariCP:5.0.1")
+    implementation("io.github.cdimascio:dotenv-java:3.2.0")
 }
 
 tasks.test {

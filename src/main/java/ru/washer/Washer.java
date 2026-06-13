@@ -2,6 +2,7 @@ package ru.washer;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import io.github.cdimascio.dotenv.Dotenv;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinJte;
 import ru.washer.repository.BaseRepository;
@@ -11,6 +12,9 @@ import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
 public class Washer {
+    private static final Dotenv DOTENV = Dotenv.configure()
+            .ignoreIfMissing()
+            .load();
 
     public static void main(String[] args) throws Exception {
         var app = getApp();
@@ -19,9 +23,11 @@ public class Washer {
 
     public static Javalin getApp() throws Exception {
         var hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl(getDatabaseUrl());
-        hikariConfig.setUsername(getDataBaseUsername());
-        hikariConfig.setPassword(getDataBasePassword());
+        var url = getDatabaseUrl();
+        if (url == null || url.isBlank()) {
+            throw new IllegalStateException("DATABASE_URL is not set in environment or .env file");
+        }
+        hikariConfig.setJdbcUrl(url);
         var dataSource = new HikariDataSource(hikariConfig);
         BaseRepository.dataSource = dataSource;
         initDatabaseSchema(dataSource);
@@ -46,22 +52,23 @@ public class Washer {
         try (var connection = dataSource.getConnection();
              var statement = connection.createStatement()) {
             statement.execute(sql);
-            System.out.println("✅ Схема базы данных успешно загружена!");
+            System.out.println("Схема базы данных успешно загружена!");
         }
     }
 
     private static String getDatabaseUrl() {
+        var url = "jdbc:postgresql://"
+                + DOTENV.get("HOST")
+                + ":"
+                + DOTENV.get("PORT")
+                + "/"
+                + DOTENV.get("DB_NAME")
+                + "?password="
+                + DOTENV.get("DB_PASSWORD")
+                + "&user="
+                + DOTENV.get("DB_USERNAME");
         return System.getenv().getOrDefault("DATABASE_URL",
-                "jdbc:postgresql://localhost:5432/washer_db");
-    }
+                url);
 
-    private static String getDataBaseUsername() {
-        return System.getenv().getOrDefault("DB_USERNAME",
-                "washer_user");
-    }
-
-    private static String getDataBasePassword() {
-        return System.getenv().getOrDefault("DB_PASSWORD",
-                "kassagar");
     }
 }

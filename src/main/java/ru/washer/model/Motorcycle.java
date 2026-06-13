@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class Motorcycle extends Vehicle {
+public class  Motorcycle extends Vehicle {
 
     // Специфичные поля для мотоцикла
     private Integer engineCapacity; // объем двигателя в куб.см
